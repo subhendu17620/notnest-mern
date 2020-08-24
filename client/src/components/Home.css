@@ -1,0 +1,50 @@
+.note-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  max-width: 70%;
+  margin: auto;
+}
+.card {
+  height: 200px;
+  text-overflow: ellipsis;
+  width: 300px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 1rem;
+  padding: 20px;
+}
+.card > .btns {
+  text-align: right;
+  /* display: flex; */
+  align-items: center;
+  justify-content: flex-end;
+}
+.note-content {
+  margin-top: 15px;
+}
+.close,
+.edit {
+  margin: 0 5px;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+}
+
+.edit > a {
+  color: black;
+}
+.edit > a:hover {
+  color: #c451c1;
+}
+.close:hover,
+.edit:hover {
+  color: #c451c1;
+}
+@media (max-width: 768px) {
+  .note-wrapper {
+    max-width: 90%;
+  }
+}

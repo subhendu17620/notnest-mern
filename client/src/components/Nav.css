@@ -1,0 +1,32 @@
+header {
+  display: flex;
+  min-width: 990px;
+  max-width: 70%;
+  margin: auto;
+  justify-content: space-between;
+}
+
+.logo > h1 > a {
+  font-size: 3rem;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+
+header > ul > li {
+  display: inline;
+  margin: 1rem;
+}
+header > ul > li > a {
+  font-size: 2rem;
+}
+@media (max-width: 768px) {
+  header {
+    min-width: 100px;
+    flex-direction: column;
+  }
+  header > ul > li {
+    display: block;
+  }
+}
