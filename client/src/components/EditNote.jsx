@@ -82,7 +82,7 @@ export default function EditNote({ match }) {
 
         <div className="container-create-form-btn">
           <button type="submit" value="Submit" className="create-form-btn">
-            Save
+            Update
           </button>
         </div>
       </form>
