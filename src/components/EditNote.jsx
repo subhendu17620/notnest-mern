@@ -17,9 +17,12 @@ export default function EditNote({ match }) {
       const token = localStorage.getItem("tokenStore");
 
       if (match.params.id) {
-        const res = await axios.get(`/api/notes/${match.params.id}`, {
-          headers: { Authorization: token },
-        });
+        const res = await axios.get(
+          `https://notnest.herokuapp.com/api/notes/${match.params.id}`,
+          {
+            headers: { Authorization: token },
+          }
+        );
 
         setNote({
           title: res.data.title,
@@ -42,9 +45,13 @@ export default function EditNote({ match }) {
           title,
           content,
         };
-        await axios.put(`/api/notes/${id}`, newNote, {
-          headers: { Authorization: token },
-        });
+        await axios.put(
+          `https://notnest.herokuapp.com/api/notes/${id}`,
+          newNote,
+          {
+            headers: { Authorization: token },
+          }
+        );
         return history.push("/");
       }
     } catch (err) {

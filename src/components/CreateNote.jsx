@@ -22,7 +22,7 @@ export default function CreateNote() {
           title,
           content,
         };
-        await axios.post("/api/notes", newNote, {
+        await axios.post("https://notnest.herokuapp.com/api/notes", newNote, {
           headers: { Authorization: token },
         });
         return history.push("/");
