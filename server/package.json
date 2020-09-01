@@ -1,0 +1,27 @@
+{
+  "name": "mern-notes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "cd client && yarn start",
+    "client-install": "cd-client && yarn add",
+    "server-install": "npm install",
+    "install-all": "npm run server-install && npm run client-install",
+    "dev": "npm run client && npm run server",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
+  "author": "Subhendu",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.0",
+    "nodemon": "^2.0.4"
+  }
+}
