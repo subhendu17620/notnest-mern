@@ -1,14 +1,21 @@
-const Notes = require("../models/noteModel");
+import Notes, {
+  find,
+  findByIdAndDelete,
+  findOneAndUpdate,
+  findById,
+} from "../models/noteModel";
 
 const noteCtrl = {
+  //get all notes
   getNotes: async (req, res) => {
     try {
-      const notes = await Notes.find({ user_id: req.user.id });
+      const notes = await find({ user_id: req.user.id });
       res.json(notes);
     } catch (err) {
       return res.status(500).json({ message: err.message });
     }
   },
+  // create a note
   createNote: async (req, res) => {
     try {
       const { title, content } = req.body;
@@ -26,18 +33,20 @@ const noteCtrl = {
       return res.status(500).json({ message: err.message });
     }
   },
+  // delete a note
   deleteNote: async (req, res) => {
     try {
-      await Notes.findByIdAndDelete(req.params.id);
+      await findByIdAndDelete(req.params.id);
       res.json({ message: "Deleted a note" });
     } catch (err) {
       return res.status(500).json({ message: err.message });
     }
   },
+  //update a note
   updateNote: async (req, res) => {
     try {
       const { title, content } = req.body;
-      await Notes.findOneAndUpdate(
+      await findOneAndUpdate(
         { _id: req.params.id },
         {
           title,
@@ -49,9 +58,10 @@ const noteCtrl = {
       return res.status(500).json({ message: err.message });
     }
   },
+  //get a note using its id
   getNote: async (req, res) => {
     try {
-      const note = await Notes.findById(req.params.id);
+      const note = await findById(req.params.id);
       res.json(note);
     } catch (err) {
       return res.status(500).json({ message: err.message });
@@ -59,4 +69,4 @@ const noteCtrl = {
   },
 };
 
-module.exports = noteCtrl;
+export default noteCtrl;

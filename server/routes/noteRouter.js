@@ -1,13 +1,19 @@
 const router = require("express").Router();
-const auth = require("../middleware/auth");
-const noteCtrl = require("../controllers/noteCtrl");
+import auth from "../middleware/auth";
+import {
+  getNotes,
+  createNote,
+  getNote,
+  updateNote,
+  deleteNote,
+} from "../controllers/noteCtrl";
 
-router.route("/").get(auth, noteCtrl.getNotes).post(auth, noteCtrl.createNote);
+router.route("/").get(auth, getNotes).post(auth, createNote);
 
 router
   .route("/:id")
-  .get(auth, noteCtrl.getNote)
-  .put(auth, noteCtrl.updateNote)
-  .delete(auth, noteCtrl.deleteNote);
+  .get(auth, getNote)
+  .put(auth, updateNote)
+  .delete(auth, deleteNote);
 
-module.exports = router;
+export default router;

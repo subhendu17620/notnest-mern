@@ -1,4 +1,4 @@
-const jwt = require("jsonwebtoken");
+import { verify } from "jsonwebtoken";
 
 const auth = (req, res, next) => {
   try {
@@ -6,7 +6,7 @@ const auth = (req, res, next) => {
     if (!token)
       return res.status(400).json({ message: "Invalid Authentication" });
 
-    jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
+    verify(token, process.env.TOKEN_SECRET, (err, user) => {
       if (err)
         return res.status(400).json({ message: "Authorization not valid. " });
       req.user = user;
@@ -17,4 +17,4 @@ const auth = (req, res, next) => {
   }
 };
 
-module.exports = auth;
+export default auth;
