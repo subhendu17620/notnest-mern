@@ -9,7 +9,7 @@ export default function Home() {
   const [token, setToken] = useState("");
 
   const getNotes = async (token) => {
-    const res = await axios.get("api/notes", {
+    const res = await axios.get("https://notnest.herokuapp.com/api/notes", {
       headers: { Authorization: token },
     });
     setNotes(res.data);
@@ -24,7 +24,7 @@ export default function Home() {
   const deleteNote = async (id) => {
     try {
       if (token) {
-        await axios.delete(`api/notes/${id}`, {
+        await axios.delete(`https://notnest.herokuapp.com/api/notes/${id}`, {
           headers: { Authorization: token },
         });
         getNotes(token);

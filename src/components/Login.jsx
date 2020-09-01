@@ -33,10 +33,13 @@ export default function Login({ setisLogin }) {
   const loginSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/users/login", {
-        email: user.email,
-        password: user.password,
-      });
+      const res = await axios.post(
+        "https://notnest.herokuapp.com/users/login",
+        {
+          email: user.email,
+          password: user.password,
+        }
+      );
 
       setUser({ name: "", email: "", password: "" });
       localStorage.setItem("tokenStore", res.data.token);

@@ -12,9 +12,12 @@ function App() {
     const checkLogin = async () => {
       const token = localStorage.getItem("tokenStore");
       if (token) {
-        const verified = await axios.get("/users/verify", {
-          headers: { Authorization: token },
-        });
+        const verified = await axios.get(
+          "https://notnest.herokuapp.com/users/verify",
+          {
+            headers: { Authorization: token },
+          }
+        );
         console.log(verified);
         setisLogin(verified.data);
         if (verified.data === false) return localStorage.clear();
