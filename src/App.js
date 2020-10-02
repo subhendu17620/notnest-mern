@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import OneSignal from "react-onesignal";
 import "./App.css";
 import Login from "./components/Login";
 import Notes from "./components/Notes";
@@ -6,8 +7,22 @@ import Notes from "./components/Notes";
 import axios from "axios";
 
 function App() {
-  const [isLogin, setisLogin] = useState(false);
+  const options = {
+    allowLocalhostAsSecureOrigin: true,
+    requiresUserPrivacyConsent: true,
+    persistNotification: true,
+    autoResubscribe: true,
+    autoRegister: true,
+    notifyButton: {
+      enable: true,
+      size: "medium",
+      position: "bottom-left",
+      showCredit: true,
+    },
+  };
 
+  const [isLogin, setisLogin] = useState(false);
+  OneSignal.initialize("112e99db-807d-4104-af7c-43e8975fc337", options);
   useEffect(() => {
     const checkLogin = async () => {
       const token = localStorage.getItem("tokenStore");
