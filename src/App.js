@@ -22,7 +22,7 @@ function App() {
   };
 
   const [isLogin, setisLogin] = useState(false);
-  OneSignal.initialize("112e99db-807d-4104-af7c-43e8975fc337", options);
+  OneSignal.initialize("112e99db-807d-4104-af7c-43e8975fc337");
   useEffect(() => {
     const checkLogin = async () => {
       const token = localStorage.getItem("tokenStore");
